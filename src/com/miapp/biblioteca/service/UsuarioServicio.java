@@ -16,7 +16,6 @@ public class UsuarioServicio {
     public void crearUsuario(String nombre, String id) {
         Usuario nuevoUsuario = new Usuario(nombre, id);
         usuarios.add(nuevoUsuario);
-        System.out.println("NUEVO USUARIO INGRESADO OK !");
     }
 
     // obtener todos los usuario

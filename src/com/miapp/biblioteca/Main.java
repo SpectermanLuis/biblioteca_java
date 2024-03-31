@@ -46,9 +46,18 @@ public class Main {
                                 String nombreUsuario = scanner.nextLine();
 
                                 // aca poner verificar que id usuario a crear no exista
+                                Usuario usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuario);
+                                if(usuarioVerificar == null)
+                                  {
+                                    usuarioServicio.crearUsuario(nombreUsuario, idUsuario);
+                                    System.out.println("NUEVO USUARIO INGRESADO OK !");
 
-                                usuarioServicio.crearUsuario(nombreUsuario, idUsuario);
+                                  } else {
+                                    System.out.println("Usuario YA ESTA registrado.!!");
+                                }
 
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
                                 break;
 
                             case 2:
@@ -56,10 +65,19 @@ public class Main {
                                 System.out.println("Ingresar Id usuario a modificar :");
                                 String idUsuarioModificar = scanner.nextLine();
 
-                                System.out.println("Ingrese Nombre Modificado :");
-                                String nuevoNombre = scanner.nextLine();
+                                // aca poner verificar que id usuario a modificar exista
+                                usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuarioModificar);
 
-                                usuarioServicio.actualizarUsuario(idUsuarioModificar, nuevoNombre);
+                               if(usuarioVerificar != null) {
+                                   System.out.println("Ingrese Nombre Modificado :");
+                                   String nuevoNombre = scanner.nextLine();
+                                   usuarioServicio.actualizarUsuario(idUsuarioModificar, nuevoNombre);
+                                   System.out.println("Usuario Modificado Ok !");
+                               } else {
+                                   System.out.println("Usuario Ingreso para Modificar NO EXISTE como Registrado");
+                               }
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
 
                                 break;
 
@@ -83,11 +101,14 @@ public class Main {
                                     switch (opcionConsultaUsuarios){
                                         case 1:
                                             ArrayList<Usuario> listaUsuarios = usuarioServicio.obtenerTodosLosUsuarios();
-                                            System.out.println(" ID      Nombre    ");
-                                            System.out.println("-----  ----------  ");
+                                            System.out.println("********************************");
+                                            System.out.println("* Consulta General de Usuarios *");
+                                            System.out.println("********************************");
+                                            System.out.println(" ID           Nombre    ");
+                                            System.out.println("-----       ----------  ");
 
                                             for(Usuario usuario: listaUsuarios){
-                                                System.out.println(usuario.getId() + "  " + usuario.getNombre() );
+                                                System.out.println(usuario.getId() + "        " + usuario.getNombre() );
                                             }
 
                                             System.out.println("Presiona Enter para continuar...");
@@ -125,8 +146,9 @@ public class Main {
                                             {
                                                 System.out.println("Usuarios  Encontrados");
                                                 for (Usuario usuario :usuariosEncontradosNombre){
-                                                    System.out.println(usuario.getId());
-                                                    System.out.println(usuario.getNombre());
+                                                    System.out.println("Id :" + usuario.getId());
+                                                    System.out.println("Nombre " + usuario.getNombre());
+                                                    System.out.println("-----------------------------------");
                                                 }
                                                 System.out.println("Presiona Enter para continuar...");
                                                 scanner.nextLine();
