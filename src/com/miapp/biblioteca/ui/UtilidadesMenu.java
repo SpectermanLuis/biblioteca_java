@@ -80,10 +80,22 @@ public class UtilidadesMenu {
         System.out.println("    1. Prestamos              ");
         System.out.println("    2. Devoluciones           ");
         System.out.println("                              ");
+        System.out.println("    4. Consultas              ");
+        System.out.println("                              ");
         System.out.println("    9. Menu Principal         ");
         System.out.println("******************************");
     }
 
-
+    public static void mostrarMenuConsultasMovimientos() {
+        System.out.println("*************************************************");
+        System.out.println("* SubMenu Consultas Movimientos                 *");
+        System.out.println("*************************************************");
+        System.out.println("    1. Libros en Prestamo                        ");
+        System.out.println("    2. Libros en Prestamo x Usuario  ( General ) ");
+        System.out.println("    3. Libros en Prestamo x Usuario  (Individual)");
+        System.out.println("                                                 ");
+        System.out.println("    9. Menu Principal Movimientos                ");
+        System.out.println("*************************************************");
+    }
 
 }

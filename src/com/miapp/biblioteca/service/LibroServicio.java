@@ -109,6 +109,20 @@ public class LibroServicio {
         return librosEncontrados;
     }
 
+
+    // buscar libros no disponibles ( Estan en prestamo )
+    public ArrayList<Libro> obtenerLibrosEnPrestamo()
+    {
+        ArrayList<Libro> librosEncontrados = new ArrayList<>();
+        for(Libro libro : biblioteca){
+            if (!libro.isDisponible())
+            {
+                librosEncontrados.add(libro);
+            }
+        }
+        return librosEncontrados;
+    }
+
     public boolean verificarDisponibilidad(Libro libro){
         return libro.isDisponible();
     }

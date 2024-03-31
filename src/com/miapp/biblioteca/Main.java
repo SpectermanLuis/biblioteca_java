@@ -405,6 +405,87 @@ public class Main {
                                 }
 
                                 break;
+
+                            case 4:
+                                int opcionConsultaMovimientos;
+                                do {
+                                    UtilidadesMenu.mostrarMenuConsultasMovimientos();
+                                    System.out.print("Ingresar Opcion : ");
+                                    opcionConsultaMovimientos = scanner.nextInt();
+                                    scanner.nextLine();
+
+                                    switch (opcionConsultaMovimientos){
+                                        case 1:
+                                            // libros en prestamo general
+                                            ArrayList<Libro> listaLibrosEnPrestamo = libroServicio.obtenerLibrosEnPrestamo();
+
+                                            if(!listaLibrosEnPrestamo.isEmpty()){
+                                                // hay libros en prestamo , listarlos
+                                                System.out.println(" ISBN    Titulo    ");
+                                                System.out.println("-----  ----------  ");
+
+                                                for(Libro libro: listaLibrosEnPrestamo){
+                                                    System.out.println(libro.getISBN() + "  " + libro.getTitulo());
+                                                }
+                                            } else {
+                                                System.out.println("No Hay Libros en Prestamo");
+                                            }
+
+                                            System.out.println("Presiona Enter para continuar...");
+                                            scanner.nextLine();
+
+                                            break;
+
+                                        case 2:
+                                            // buscar usuario x id
+                                            System.out.print("Ingresar el ID del usuario a buscar : ");
+                                            String idBuscar = scanner.nextLine();
+
+                                            Usuario usuarioId = usuarioServicio.buscarUsuarioPorId(idBuscar);
+
+                                            if(usuarioId != null){
+                                                System.out.println("Usuario encontrado ");
+                                                System.out.println("Id : " + idBuscar);
+                                                System.out.println("Nombre : " + usuarioId.getNombre());
+                                                System.out.println("Presiona Enter para continuar...");
+                                                scanner.nextLine();
+
+                                            } else {
+                                                System.out.println("Usuario No Encontrado");
+                                                System.out.println("Presiona Enter para continuar...");
+                                                scanner.nextLine();
+                                            }
+                                            break;
+
+                                        case 3:
+                                            // buscar usuarios  por Nombre
+                                            System.out.println("Ingrese Nombre del Usuario a buscar : ");
+                                            String campoBusquedaNombre = scanner.nextLine();
+                                            ArrayList<Usuario> usuariosEncontradosNombre  = usuarioServicio.buscarUsuarioPorCondicion("nombre",campoBusquedaNombre);
+                                            if(!usuariosEncontradosNombre.isEmpty())
+                                            {
+                                                System.out.println("Usuarios  Encontrados");
+                                                for (Usuario usuario :usuariosEncontradosNombre){
+                                                    System.out.println(usuario.getId());
+                                                    System.out.println(usuario.getNombre());
+                                                }
+                                                System.out.println("Presiona Enter para continuar...");
+                                                scanner.nextLine();
+
+                                            } else {
+                                                System.out.println("Ningun Usuario cumple con la condicion de busqueda");
+                                                System.out.println("Presiona Enter para continuar...");
+                                                scanner.nextLine();
+                                            }
+                                            break;
+
+                                        default:
+                                            System.out.println("Opcion Invalida!! Reingresar");
+                                    }
+
+                                }while (opcionConsultaMovimientos != 9);
+                                break;
+
                         }
 
                     }while (opcionMovimientos  != 9);
