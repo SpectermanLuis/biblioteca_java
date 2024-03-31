@@ -437,24 +437,31 @@ public class Main {
                                             break;
 
                                         case 2:
-                                            // buscar usuario x id
-                                            System.out.print("Ingresar el ID del usuario a buscar : ");
-                                            String idBuscar = scanner.nextLine();
+                                            // libros prestados x usuario general
+                                            ArrayList<Usuario> usuariosConLibrosPrestados = usuarioServicio.obtenerUsuariosConLibrosPrestados();
 
-                                            Usuario usuarioId = usuarioServicio.buscarUsuarioPorId(idBuscar);
-
-                                            if(usuarioId != null){
-                                                System.out.println("Usuario encontrado ");
-                                                System.out.println("Id : " + idBuscar);
-                                                System.out.println("Nombre : " + usuarioId.getNombre());
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
-
+                                            if(usuariosConLibrosPrestados.isEmpty()) {
+                                                System.out.println("No hay usuarios con libros prestados");
                                             } else {
-                                                System.out.println("Usuario No Encontrado");
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
+
+                                                for (Usuario usuario :usuariosConLibrosPrestados){
+
+                                                    ArrayList<Libro> librosPrestados = usuario.getLibrosPrestados();
+
+                                                    for (Libro libroPrestadoUsuario:librosPrestados) {
+                                                        System.out.println(usuario.getId());
+                                                        System.out.println(usuario.getNombre());
+                                                        System.out.println(libroPrestadoUsuario.getISBN());
+                                                        System.out.println(libroPrestadoUsuario.getTitulo());
+                                                        System.out.println("--------------------------");
+                                                    }
+
+                                                }
+
                                             }
+                                            System.out.println("Presiona Enter para continuar...");
+                                            scanner.nextLine();
+
                                             break;
 
                                         case 3:

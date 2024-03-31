@@ -123,6 +123,9 @@ public class LibroServicio {
         return librosEncontrados;
     }
 
+
+
+
     public boolean verificarDisponibilidad(Libro libro){
         return libro.isDisponible();
     }

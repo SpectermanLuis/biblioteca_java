@@ -90,7 +90,6 @@ public class UsuarioServicio {
         }
     }
 
-
 public ArrayList<Libro> obtenerLibrosPrestados(Usuario usuario) {
         return usuario.getLibrosPrestados();
 }
@@ -104,6 +103,21 @@ public ArrayList<Libro> obtenerLibrosPrestados(Usuario usuario) {
         System.out.println("Este libro no fue prestado al Usuario!");
     }
  }
+
+ public ArrayList<Usuario> obtenerUsuariosConLibrosPrestados(){
+     ArrayList<Usuario> usuariosEncontrados = new ArrayList<>();
+     ArrayList<Libro> librosPrestados  = new ArrayList<>();
+
+     for(Usuario usuario : usuarios){
+         librosPrestados = obtenerLibrosPrestados(usuario);
+         if (!librosPrestados.isEmpty()) {
+             usuariosEncontrados.add(usuario);
+         }
+     }
+     return usuariosEncontrados;
+
+ }
+
 
 }
 
