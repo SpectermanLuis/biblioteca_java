@@ -95,12 +95,13 @@ public ArrayList<Libro> obtenerLibrosPrestados(Usuario usuario) {
         return usuario.getLibrosPrestados();
 }
 
-public void devolverLibro(Usuario usuario , Libro libro){
+ public void devolverLibro(Usuario usuario , Libro libro)
+ {
     if(usuario.getLibrosPrestados().contains(libro)) {
         usuario.getLibrosPrestados().remove(libro);
         libro.setDisponible(true);
     } else {
-        System.out.println("Este libro no fue prestado al Usuario");
+        System.out.println("Este libro no fue prestado al Usuario!");
     }
  }
 
