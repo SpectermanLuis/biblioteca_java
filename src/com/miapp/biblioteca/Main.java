@@ -87,7 +87,18 @@ public class Main {
                                 // no tenga libros por devolver
                                 System.out.println("Ingresar el Id del Usuario a eliminar : ");
                                 String idUsuarioEliminar = scanner.nextLine();
-                                libroServicio.eliminarLibro(idUsuarioEliminar);
+
+                                // aca poner verificar que id usuario a modificar exista
+                                usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuarioEliminar);
+                                if(usuarioVerificar != null) {
+                                    usuarioServicio.eliminarUsuario(idUsuarioEliminar);
+                                    System.out.println("Usuario Eliminado OK !");
+                                } else {
+                                    System.out.println("Usuario A Eliminar NO EXISTE como registrado");
+                                }
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
+
                                 break;
 
                             case 4:
