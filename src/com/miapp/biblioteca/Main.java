@@ -465,25 +465,41 @@ public class Main {
                                             break;
 
                                         case 3:
-                                            // buscar usuarios  por Nombre
-                                            System.out.println("Ingrese Nombre del Usuario a buscar : ");
-                                            String campoBusquedaNombre = scanner.nextLine();
-                                            ArrayList<Usuario> usuariosEncontradosNombre  = usuarioServicio.buscarUsuarioPorCondicion("nombre",campoBusquedaNombre);
-                                            if(!usuariosEncontradosNombre.isEmpty())
-                                            {
-                                                System.out.println("Usuarios  Encontrados");
-                                                for (Usuario usuario :usuariosEncontradosNombre){
+
+                                            System.out.println("Ingresar Id del Usuario :");
+                                            String idUsuarioPrestamo = scanner.nextLine();
+                                            Usuario usuario   = usuarioServicio.buscarUsuarioPorId(idUsuarioPrestamo);
+
+                                            if(usuario != null) {
+
+                                               ArrayList<Libro>  librosPrestados = usuarioServicio.obtenerLibrosPrestados(usuario);
+
+                                                if(!librosPrestados.isEmpty()) {
                                                     System.out.println(usuario.getId());
                                                     System.out.println(usuario.getNombre());
+
+                                                    for(Libro libro : librosPrestados) {
+                                                        System.out.println(libro.getISBN());
+                                                        System.out.println(libro.getTitulo());
+                                                    }
+                                                    System.out.println("Presiona Enter para continuar...");
+                                                    scanner.nextLine();
+
+
+                                                } else {
+                                                    System.out.println("Usuario No tiene Libros Prestados");
+                                                    System.out.println("Presiona Enter para continuar...");
+                                                    scanner.nextLine();
+
                                                 }
+
+                                            } else {
+                                                System.out.println("Usuario No Encontrado");
                                                 System.out.println("Presiona Enter para continuar...");
                                                 scanner.nextLine();
 
-                                            } else {
-                                                System.out.println("Ningun Usuario cumple con la condicion de busqueda");
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
                                             }
+
                                             break;
 
                                         default:

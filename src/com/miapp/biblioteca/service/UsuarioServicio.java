@@ -104,9 +104,10 @@ public ArrayList<Libro> obtenerLibrosPrestados(Usuario usuario) {
     }
  }
 
- public ArrayList<Usuario> obtenerUsuariosConLibrosPrestados(){
+ public ArrayList<Usuario> obtenerUsuariosConLibrosPrestados()
+ {
      ArrayList<Usuario> usuariosEncontrados = new ArrayList<>();
-     ArrayList<Libro> librosPrestados  = new ArrayList<>();
+     ArrayList<Libro>   librosPrestados     = new ArrayList<>();
 
      for(Usuario usuario : usuarios){
          librosPrestados = obtenerLibrosPrestados(usuario);
@@ -117,7 +118,6 @@ public ArrayList<Libro> obtenerLibrosPrestados(Usuario usuario) {
      return usuariosEncontrados;
 
  }
-
 
 }
 
