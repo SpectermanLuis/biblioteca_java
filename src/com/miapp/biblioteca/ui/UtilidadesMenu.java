@@ -99,4 +99,18 @@ public class UtilidadesMenu {
         System.out.println("*************************************************");
     }
 
+
+    public static void mostrarMenuCalificaciones() {
+        System.out.println("*************************************************");
+        System.out.println("* SubMenu Consultas Calificaciones              *");
+        System.out.println("*************************************************");
+        System.out.println("    1. Todas las Calificaciones                  ");
+        System.out.println("    2. Calificaciones x Usuario   ( Individual ) ");
+        System.out.println("    3. Calificaciones x Libro ( isbn )           ");
+        System.out.println("                                                 ");
+        System.out.println("    9. Menu Principal Principal                  ");
+        System.out.println("*************************************************");
+    }
+
+
 }

@@ -10,16 +10,16 @@ El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta 
 #### Estructura de directorios
 ``` tree
     ├── src
-    │   └── server.js
-    ├── tests
-    │   └── proyecto2.test.js
-    ├── .env
-    ├── .env.dist
-    ├── .eslintrc.json
+    │   └── com.miapp.biblioteca
+    │      ├── Main.java
+    │      ├── Libro.java
+    │      ├── Usuario.java           
+    │      ├── service
+    │      │   ├── LibroServicio.java
+    │      │   ├── UsuarioServicio.java
+    │      └── ui     
+    │          └── utilidadesMenu.java
     ├── .gitignore
-    ├── connection_db.js
-    ├── package.json
-    ├── package-lock.json 
     └── README.md
 ```
 

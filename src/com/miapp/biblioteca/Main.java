@@ -2,6 +2,8 @@ package com.miapp.biblioteca;
 
 import com.miapp.biblioteca.service.LibroServicio;
 import com.miapp.biblioteca.service.UsuarioServicio;
+import com.miapp.biblioteca.service.CalificacionServicio;
+
 import com.sun.xml.internal.ws.api.client.SelectOptimalEncodingFeature;
 import com.miapp.biblioteca.ui.UtilidadesMenu;
 
@@ -13,8 +15,12 @@ public class Main {
 
         ArrayList<Libro> biblioteca = new ArrayList<>();
         ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<Calificacion> calificaciones = new ArrayList<>();
+
         LibroServicio libroServicio = new LibroServicio(biblioteca);
         UsuarioServicio usuarioServicio = new UsuarioServicio(usuarios);
+        CalificacionServicio calificacionServicio = new CalificacionServicio(calificaciones);
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -429,6 +435,16 @@ public class Main {
                                         usuarioServicio.devolverLibro(usuarioDevuelve,libroDevuelve);
                                         System.out.println("Devolucion OK ");
                                         System.out.println("Libro devuelve por " + usuarioDevuelve.getNombre());
+
+                                        // ingresar comentario / puntuacion
+                                        System.out.println("Ingresar Puntuacion al Libro :");
+                                        String  puntuacionLibroDevuelto  = scanner.nextLine();
+
+                                        System.out.println("Ingresar Comentario del Libro :");
+                                        String  comentarioLibroDevuelto  = scanner.nextLine();
+
+                                        calificacionServicio.crearCalificacion(idUsuarioDevuelve,isbnDevuelve,puntuacionLibroDevuelto,comentarioLibroDevuelto);
+
                                     } else {
                                         System.out.println("Libro No Encontrado");
                                     }
@@ -545,8 +561,49 @@ public class Main {
                         }
 
                     }while (opcionMovimientos  != 9);
+
                 break;
 
+
+                case 4:
+                    // submenu calificaciones
+
+                    int opcionCalificaciones;
+                    do {
+                        UtilidadesMenu.mostrarMenuCalificaciones();
+                        System.out.print("Ingresar Opcion : ");
+                        opcionCalificaciones  = scanner.nextInt();
+                        scanner.nextLine();
+
+                        switch (opcionCalificaciones)
+                        {
+                            case 1:
+
+                                ArrayList<Calificacion> listaCalificaciones = calificacionServicio.obtenerCalificaciones();
+                                System.out.println(" Usuario         ISBN         Puntuacion     Comentario");
+                                System.out.println("-------------  ----------  --------------   -----------");
+
+                                for(Calificacion calificacion: listaCalificaciones){
+                                    System.out.println(calificacion.getIdUsuario() + "  " + calificacion.getIsbn() +
+                                            "    " + calificacion.getEstrellas() + "     "  + calificacion.getComentario());
+                                }
+
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
+
+                                break;
+
+                            case 2:
+                                break;
+
+                            case 3:
+                                break;
+
+                        }
+
+                    }while (opcionCalificaciones  != 9);
+
+                    break;
 
                 case 5:
                    // carga automatica de libros para prueba inicial

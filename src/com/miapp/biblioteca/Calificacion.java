@@ -1,22 +1,21 @@
 package com.miapp.biblioteca;
 
-import java.util.ArrayList;
-
-public class Calificaciones {
+public class Calificacion {
 
     private String idUsuario;
     private String isbn;
-    private int estrellas;
+    private String estrellas;
     private String comentario;
 
-    public Calificaciones() {
-    }
 
-    public Calificaciones(String idUsuario, String isbn, int estrellas, String comentario) {
+    public Calificacion(String idUsuario, String isbn, String estrellas, String comentario) {
         this.idUsuario = idUsuario;
         this.isbn = isbn;
         this.estrellas = estrellas;
         this.comentario = comentario;
+    }
+
+    public Calificacion() {
     }
 
     public String getIdUsuario() {
@@ -27,7 +26,7 @@ public class Calificaciones {
         return isbn;
     }
 
-    public int getEstrellas() {
+    public String getEstrellas() {
         return estrellas;
     }
 
@@ -43,7 +42,7 @@ public class Calificaciones {
         this.isbn = isbn;
     }
 
-    public void setEstrellas(int estrellas) {
+    public void setEstrellas(String estrellas) {
         this.estrellas = estrellas;
     }
 
