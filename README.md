@@ -13,10 +13,12 @@ El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta 
     │   └── com.miapp.biblioteca
     │      ├── Main.java
     │      ├── Libro.java
-    │      ├── Usuario.java           
+    │      ├── Usuario.java 
+    │      ├── Calificacion.java              
     │      ├── service
     │      │   ├── LibroServicio.java
     │      │   ├── UsuarioServicio.java
+    │      │   ├── CalificacionServicio.java    
     │      └── ui     
     │          └── utilidadesMenu.java
     ├── .gitignore
@@ -24,15 +26,60 @@ El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta 
 ```
 
 ---
-### CONFIGURACION DE ENTORNO
-  - #### VARIABLES DE ENTORNO
-    Se debe hacer una copia del archivo **.env.dist** y renombrarlo como **.env**. Con respecto a su contenido, es necesario asignar los valores a correspondientes a las variables:
-    ``` js
-        SERVER_PORT=3005
-        SERVER_HOST=127.0.0.1
+### Estructura Menu Sistema Biblioteca
+   
+    ``` 
+        ******************************************** 
+        *   Menú Principal Sistema Biblioteca 2.0  *
+        ********************************************
+              1. SubMenu Usuarios
+                   1. Crear Usuario
+                   2. Actualizar Usuario
+                   3. Eliminar Usuario
+                   4. Consultas
+                        1. Todos los Usuario
+                        2. x ID
+                        3. x Nombre
+                        9. Menu Principal Usuario
+                   9. Menu Principal
+        
+              2. SubMenu Libros
+                   1. Crear Libro
+                   2. Actualizar Libro
+                   3. Eliminar Libro
+                   4. Consultas
+                        1. Todos los Libros
+                        2. x ISBN
+                        3. x Titulo
+                        4. x Autor
+                        5. x Genero
+                        6. x Editorial
+                        9. Menu Principal Libros
+                   9. Menu Principal
 
-        DATABASE_URL=tu-cadena-de-conexion
-        DATABASE_NAME=muebleria
+              3. SubMenu Movimientos
+                   1. Prestamos
+                   2. Devoluciones
+                   4. Consultas
+                        1. Libros en Prestamo
+                        2. Libros en Prestamo x Usuario  ( General )
+                        3. Libros en Prestamo x Usuario  (Individual)
+                        9. Menu Principal Movimientos
+                   9. Menu Principal
+
+
+              4. SubMenu Calificaciones
+                   1. Todas las Calificaciones
+                   2. Calificaciones x Usuario   ( Individual )
+                   3. Calificaciones x Libro ( isbn )
+                   9. Menu Principal
+
+
+              5. Carga Automatica de
+                 datos prueba 
+
+              9. Salir del Sistema
+        
     ```
 
  - #### TESTS

@@ -3,19 +3,22 @@ package com.miapp.biblioteca.ui;
 public class UtilidadesMenu {
 
     public static void mostrarMenuPrincipal() {
-        System.out.println("**********************************");
-        System.out.println("*   Menú Sistema Biblioteca 2.0  *");
-        System.out.println("**********************************");
-        System.out.println("        1. SubMenu Usuarios"       );
-        System.out.println("        2. SubMenu Libros"         );
-        System.out.println("        3. SubMenu Movimientos"    );
-        System.out.println("        4. SubMenu Calificaciones" );
-        System.out.println("                                  ");
-        System.out.println("        5. Carga Automatica de    ");
-        System.out.println("           datos prueba           ");
-        System.out.println("                                  ");
-        System.out.println("        9. Salir del Sistema"      );
-        System.out.println("**********************************");
+        System.out.println("********************************************");
+        System.out.println("*   Menú Principal Sistema Biblioteca 2.0  *");
+        System.out.println("********************************************");
+        System.out.println("        1. SubMenu Usuarios                 ");
+        System.out.println("                                            ");
+        System.out.println("        2. SubMenu Libros                   ");
+        System.out.println("                                            ");
+        System.out.println("        3. SubMenu Movimientos              ");
+        System.out.println("                                            ");
+        System.out.println("        4. SubMenu Calificaciones           ");
+        System.out.println("                                            ");
+        System.out.println("        5. Carga Automatica de              ");
+        System.out.println("           datos prueba                     ");
+        System.out.println("                                            ");
+        System.out.println("        9. Salir del Sistema                ");
+        System.out.println("********************************************");
     }
 
     public static void mostrarMenuUsuarios() {
@@ -30,6 +33,19 @@ public class UtilidadesMenu {
         System.out.println("        9. Menu Principal     ");
         System.out.println("******************************");
     }
+
+    public static void mostrarMenuConsultasUsuarios() {
+        System.out.println("******************************");
+        System.out.println("*  SubMenu Consultas Usuario *");
+        System.out.println("******************************");
+        System.out.println("    1. Todos los Usuarios     ");
+        System.out.println("    2. x ID                   ");
+        System.out.println("    3. x Nombre               ");
+        System.out.println("                              ");
+        System.out.println("    9. Menu Principal Usuario ");
+        System.out.println("******************************");
+    }
+
 
     public static void mostrarMenuLibros() {
         System.out.println("******************************");
@@ -59,20 +75,6 @@ public class UtilidadesMenu {
         System.out.println("    9. Menu Principal Libros  ");
         System.out.println("******************************");
     }
-
-
-    public static void mostrarMenuConsultasUsuarios() {
-        System.out.println("******************************");
-        System.out.println("*  SubMenu Consultas Usuario *");
-        System.out.println("******************************");
-        System.out.println("    1. Todos los Usuarios     ");
-        System.out.println("    2. x ID                   ");
-        System.out.println("    3. x Nombre               ");
-        System.out.println("                              ");
-        System.out.println("    9. Menu Principal Usuario ");
-        System.out.println("******************************");
-    }
-
 
     public static void mostrarMenuMovimientos() {
         System.out.println("******************************");
