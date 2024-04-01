@@ -13,14 +13,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        ArrayList<Libro> biblioteca = new ArrayList<>();
-        ArrayList<Usuario> usuarios = new ArrayList<>();
+        ArrayList<Libro>        biblioteca = new ArrayList<>();
+        ArrayList<Usuario>      usuarios = new ArrayList<>();
         ArrayList<Calificacion> calificaciones = new ArrayList<>();
 
         LibroServicio libroServicio = new LibroServicio(biblioteca);
         UsuarioServicio usuarioServicio = new UsuarioServicio(usuarios);
         CalificacionServicio calificacionServicio = new CalificacionServicio(calificaciones);
-
 
         Scanner scanner = new Scanner(System.in);
 
@@ -419,6 +418,9 @@ public class Main {
                                 } else {
                                     System.out.println("Usuario No Encontrado");
                                 }
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
+
 
                                 break;
 
@@ -436,15 +438,24 @@ public class Main {
                                         System.out.println("Devolucion OK ");
                                         System.out.println("Libro devuelve por " + usuarioDevuelve.getNombre());
 
-                                        // ingresar comentario / puntuacion
-                                        System.out.println("Ingresar Puntuacion al Libro :");
-                                        String  puntuacionLibroDevuelto  = scanner.nextLine();
 
-                                        System.out.println("Ingresar Comentario del Libro :");
-                                        String  comentarioLibroDevuelto  = scanner.nextLine();
+                                        System.out.println("Desea Calificar al Libro ?   ( S/N)");
+                                        String sinoCalificacion  = scanner.nextLine();
 
-                                        calificacionServicio.crearCalificacion(idUsuarioDevuelve,isbnDevuelve,puntuacionLibroDevuelto,comentarioLibroDevuelto);
+                                        if(sinoCalificacion.equalsIgnoreCase("S"))
+                                           {
+                                            // ingresar comentario / puntuacion
+                                            System.out.println("Ingresar Puntuacion al Libro");
+                                            System.out.println("Escala del 1 al 5");
+                                            System.out.println("Siendo 1 Muy Malo  y 5 Excelente");
+                                            String puntuacionLibroDevuelto = scanner.nextLine();
 
+                                            System.out.println("Ingresar Comentario del Libro :");
+                                            String comentarioLibroDevuelto = scanner.nextLine();
+
+                                            calificacionServicio.crearCalificacion(idUsuarioDevuelve, isbnDevuelve, puntuacionLibroDevuelto, comentarioLibroDevuelto);
+                                            System.out.println("Calificacion Ingresada OK !");
+                                           }
                                     } else {
                                         System.out.println("Libro No Encontrado");
                                     }
@@ -452,6 +463,8 @@ public class Main {
                                 } else {
                                     System.out.println("Usuario No Encontrado");
                                 }
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
 
                                 break;
 
@@ -594,9 +607,74 @@ public class Main {
                                 break;
 
                             case 2:
+                                System.out.println("Ingresar Id del Usuario :");
+                                String idUsuarioCalificacion = scanner.nextLine();
+                                Usuario usuario   = usuarioServicio.buscarUsuarioPorId(idUsuarioCalificacion);
+
+                                if(usuario != null) {
+
+                                    ArrayList<Calificacion>  calificacionUsuario = calificacionServicio.buscarCalificacionPorUsuario(idUsuarioCalificacion) ;
+
+                                    if(!calificacionUsuario.isEmpty()) {
+                                        System.out.println(usuario.getId());
+                                        System.out.println(usuario.getNombre());
+
+                                        for(Calificacion calificacion : calificacionUsuario) {
+                                            System.out.println(calificacion.getIsbn());
+                                            Libro libro = libroServicio.buscarLibroPorISBN(calificacion.getIsbn());
+                                            System.out.println(libro.getTitulo());
+                                        }
+
+                                    } else {
+                                        System.out.println("Usuario No tiene Calificaciones Realizadas");
+
+                                    }
+
+                                } else {
+                                    System.out.println("Usuario No Encontrado");
+
+                                }
+
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
+
                                 break;
 
+
                             case 3:
+                                System.out.println("Ingresar ISBN del Libro :");
+                                String isbnCalificacion = scanner.nextLine();
+                                Libro libro =  libroServicio.buscarLibroPorISBN(isbnCalificacion);
+
+                                if(libro != null) {
+
+                                    ArrayList<Calificacion>  calificacionIsbn = calificacionServicio.buscarCalificacionPorIsbn(isbnCalificacion) ;
+
+                                    if(!calificacionIsbn.isEmpty()) {
+
+                                        System.out.println(libro.getISBN());
+                                        System.out.println(libro.getTitulo());
+
+                                        for(Calificacion calificacion : calificacionIsbn) {
+                                            System.out.println(calificacion.getIdUsuario());
+                                            Usuario usuario1 = usuarioServicio.buscarUsuarioPorId(calificacion.getIdUsuario());
+                                            System.out.println(usuario1.getNombre());
+                                        }
+
+                                    } else {
+                                        System.out.println("Libro Sin Calificaciones");
+
+                                    }
+
+                                } else {
+                                    System.out.println("Libro No Encontrado");
+
+                                }
+
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
+
+
                                 break;
 
                         }
@@ -634,3 +712,5 @@ public class Main {
 
 
 }
+
+

@@ -28,4 +28,33 @@ public class CalificacionServicio {
         }
     }
 
+    // buscar calificaciones por Usuario
+    public ArrayList<Calificacion> buscarCalificacionPorUsuario(String idUsuario)
+    {
+        ArrayList<Calificacion> calificacionesEncontradas = new ArrayList<>();
+
+        for(Calificacion calificacion : calificaciones){
+            if (calificacion.getIdUsuario().equalsIgnoreCase(idUsuario))
+            {
+                calificacionesEncontradas.add(calificacion);
+            }
+        }
+        return calificacionesEncontradas;
+    }
+
+
+    // buscar calificaciones por Usuario
+    public ArrayList<Calificacion> buscarCalificacionPorIsbn(String isbn)
+    {
+        ArrayList<Calificacion> calificacionesEncontradas = new ArrayList<>();
+
+        for(Calificacion calificacion : calificaciones){
+            if (calificacion.getIsbn().equalsIgnoreCase(isbn))
+            {
+                calificacionesEncontradas.add(calificacion);
+            }
+        }
+        return calificacionesEncontradas;
+    }
+
 }
