@@ -16,7 +16,7 @@ public class CalificacionServicio {
     }
 
     // ingresar nueva puntuacion / calificacion
-    public void crearCalificacion(String idUsuario, String isbn, String estrellas, String comentario) {
+    public void crearCalificacion(String idUsuario, String isbn, int estrellas, String comentario) {
         Calificacion nuevaCalificacion = new Calificacion(idUsuario,isbn,estrellas,comentario);
         calificaciones.add(nuevaCalificacion);
     }

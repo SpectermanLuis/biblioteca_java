@@ -108,7 +108,7 @@ public class UtilidadesMenu {
         System.out.println("    2. Calificaciones x Usuario   ( Individual ) ");
         System.out.println("    3. Calificaciones x Libro ( isbn )           ");
         System.out.println("                                                 ");
-        System.out.println("    9. Menu Principal Principal                  ");
+        System.out.println("    9. Menu Principal                            ");
         System.out.println("*************************************************");
     }
 

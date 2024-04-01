@@ -4,11 +4,11 @@ public class Calificacion {
 
     private String idUsuario;
     private String isbn;
-    private String estrellas;
+    private int estrellas;
     private String comentario;
 
 
-    public Calificacion(String idUsuario, String isbn, String estrellas, String comentario) {
+    public Calificacion(String idUsuario, String isbn, int estrellas, String comentario) {
         this.idUsuario = idUsuario;
         this.isbn = isbn;
         this.estrellas = estrellas;
@@ -26,7 +26,7 @@ public class Calificacion {
         return isbn;
     }
 
-    public String getEstrellas() {
+    public int getEstrellas() {
         return estrellas;
     }
 
@@ -42,7 +42,7 @@ public class Calificacion {
         this.isbn = isbn;
     }
 
-    public void setEstrellas(String estrellas) {
+    public void setEstrellas(int estrellas) {
         this.estrellas = estrellas;
     }
 

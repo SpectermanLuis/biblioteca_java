@@ -448,7 +448,7 @@ public class Main {
                                             System.out.println("Ingresar Puntuacion al Libro");
                                             System.out.println("Escala del 1 al 5");
                                             System.out.println("Siendo 1 Muy Malo  y 5 Excelente");
-                                            String puntuacionLibroDevuelto = scanner.nextLine();
+                                            int puntuacionLibroDevuelto = scanner.nextInt();
 
                                             System.out.println("Ingresar Comentario del Libro :");
                                             String comentarioLibroDevuelto = scanner.nextLine();
@@ -598,7 +598,7 @@ public class Main {
 
                                 for(Calificacion calificacion: listaCalificaciones){
                                     System.out.println(calificacion.getIdUsuario() + "  " + calificacion.getIsbn() +
-                                            "    " + calificacion.getEstrellas() + "     "  + calificacion.getComentario());
+                                            "    " + convierteNumeroEnEstrellas(calificacion.getEstrellas()) + "     "  + calificacion.getComentario());
                                 }
 
                                 System.out.println("Presiona Enter para continuar...");
@@ -710,6 +710,35 @@ public class Main {
         } while (opcion != 9);
     }
 
+public static String convierteNumeroEnEstrellas(int valor){
+       String cadena = "";
+       switch (valor){
+           case 1:
+             cadena = "*";
+           break;
+
+           case 2:
+               cadena = "**";
+               break;
+
+           case 3:
+               cadena = "***";
+
+               break;
+
+           case 4:
+               cadena = "****";
+               break;
+
+           case 5:
+               cadena = "*****";
+               break;
+
+       }
+
+     return cadena;
+
+    }
 
 }
 
