@@ -1,6 +1,6 @@
 # Proyecto Integrador JAVA
 
-El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta es una pequeña solución informática que sirve para el manejo basico de una biblioteca , registrar libros y usuarios , prestamos y devoluciones como tambien consultas varias
+El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta es una pequeña solución informática que sirve para el manejo basico de una biblioteca , registrar libros y usuarios , prestamos y devoluciones, calificaciones y reseñas como tambien consultas varias
 
 #### Requerimientos
 - Jdk 
