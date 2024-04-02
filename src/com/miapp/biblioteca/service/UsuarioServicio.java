@@ -12,17 +12,34 @@ public class UsuarioServicio {
         this.usuarios = usuarios;
     }
 
-    // crear nuevo usuario
+    /**
+     *  Metodo : crearUsuario
+     *           Crea un nuevo usuario con los datos ingresados por teclado
+     * @param nombre  Nombre del Usuario
+     * @param id      Identificacion del Usuario
+     */
     public void crearUsuario(String nombre, String id) {
         Usuario nuevoUsuario = new Usuario(nombre, id);
         usuarios.add(nuevoUsuario);
+        System.out.println("NUEVO USUARIO INGRESADO OK !");
     }
 
-    // obtener todos los usuario
+    /**
+     *  Metodo : obtenerTodosLosUsuarios
+     *           Obtiene todos los usuarios creados
+     * @return   Devuelve un ArrayList con todos los usuarios
+     */
     public ArrayList<Usuario> obtenerTodosLosUsuarios() {
         return usuarios;
     }
 
+    /**
+     *  Metodo : buscarUsuarioPorId
+     *           Busca si existe un deterrminado usuario segun un Id ingresado
+     * @param id  Identificador de usuario a buscar
+     * @return    Si encuentra la existencia del usuario , devuelve un objeto usuario
+     *            En caso contrario devuelve null
+     */
     public Usuario buscarUsuarioPorId(String id) {
         for(Usuario usuario : usuarios){
             if(usuario.getId().equals(id))
@@ -33,6 +50,22 @@ public class UsuarioServicio {
         return null;  // no encuentra usuario , retorna null
     }
 
+    /**
+     *  Metodo buscarUsuarioPorCondicion
+     *         Busca los usuarios que cumplan cierta condicion
+     *         Sirve para realizar busquedas varias segun un criterio indicado
+     *
+     * @param criterioBusqueda  : seleccion de criterio de busqueda.
+     *                            Los valores podran ser : nombre
+     *                            Por el momento es el unico criterio , pero se podran agregar
+     *                            nuevos criterios si se ingresaran mas datos al usuario
+     *
+     * @param terminoBusqueda   : texto a buscar en los usuarios existentes segun el criterio indicado
+     *                            en criterioBusqueda
+     *
+     * @return                  : devuelve un ArrayList con los usuarios encontrados segun criterio y termino
+     *                            de busqueda
+     */
     public ArrayList<Usuario> buscarUsuarioPorCondicion(String criterioBusqueda ,String terminoBusqueda)
     {
 
@@ -80,6 +113,13 @@ public class UsuarioServicio {
 
     }
 
+    /**
+     * Metodo : prestarLibro
+     *          Cambia el estado del libro de disponible (true) a no disponible (false)
+     *
+     * @param usuario  Usuario a quien se le prestara un libro
+     * @param libro    Libro que sera entregado en prestamo al Usuario
+     */
     public void prestarLibro(Usuario usuario, Libro libro) {
         if(libro.isDisponible()) {
            usuario.getLibrosPrestados().add(libro);
@@ -89,35 +129,57 @@ public class UsuarioServicio {
         }
     }
 
-public ArrayList<Libro> obtenerLibrosPrestados(Usuario usuario) {
+    /**
+     *  Metodo obtenerLibrosPrestados
+     *         Obtiene de un usuario determinado la lista de libros
+     *         que tiene entregados en prestamo
+     *
+     * @param usuario Objeto de un usuario determinado
+     *
+     * @return  Arraylist con la lista de libros prestados al usuario
+     */
+    public ArrayList<Libro> obtenerLibrosPrestados(Usuario usuario) {
         return usuario.getLibrosPrestados();
 }
 
- public void devolverLibro(Usuario usuario , Libro libro)
- {
-    if(usuario.getLibrosPrestados().contains(libro)) {
-        usuario.getLibrosPrestados().remove(libro);
-        libro.setDisponible(true);
-    } else {
-        System.out.println("Este libro no fue prestado al Usuario!");
+    /**
+     *  Metodo : devolverLibro
+     *           Se cambia la marca de no disponible a disponible
+     *           en el libro indicado del usuario indicado que
+     *           esta devolviendo el libro prestado
+     * @param usuario Usuario que devuelve el libro
+     * @param libro   Libro que esta siendo devuelto
+     *
+     *                Se quitara el libro de la lista de libros en prestado del usuario
+     *                y se pondra la marca de disponible en true
+     */
+    public void devolverLibro(Usuario usuario , Libro libro)
+    {
+       if(usuario.getLibrosPrestados().contains(libro)) {
+           usuario.getLibrosPrestados().remove(libro);
+           libro.setDisponible(true);
+       } else {
+           System.out.println("Este libro no fue prestado al Usuario!");
+       }
     }
- }
 
- public ArrayList<Usuario> obtenerUsuariosConLibrosPrestados()
- {
-     ArrayList<Usuario> usuariosEncontrados = new ArrayList<>();
-     ArrayList<Libro>   librosPrestados     = new ArrayList<>();
+    /**
+     *  Metodo : obtenerUsuarioConLibrosPrestados
+     *           Se obtiene la lista de usuarios que tienen libros en condicion de prestamo
+     * @return   Devuelve un ArrayList con los usuarios cuya lista de libros prestados no este vacia
+     */
+     public ArrayList<Usuario> obtenerUsuariosConLibrosPrestados()
+     {
+         ArrayList<Usuario> usuariosEncontrados = new ArrayList<>();
+         ArrayList<Libro>   librosPrestados     = new ArrayList<>();
 
-     for(Usuario usuario : usuarios){
-         librosPrestados = obtenerLibrosPrestados(usuario);
-         if (!librosPrestados.isEmpty()) {
-             usuariosEncontrados.add(usuario);
+         for(Usuario usuario : usuarios){
+             librosPrestados = obtenerLibrosPrestados(usuario);
+             if (!librosPrestados.isEmpty()) {
+                 usuariosEncontrados.add(usuario);
+             }
          }
-     }
      return usuariosEncontrados;
-
  }
 
 }
-
-

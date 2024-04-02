@@ -3,10 +3,9 @@ package com.miapp.biblioteca;
 import java.util.ArrayList;
 
 public class Usuario {
-
-    private String nombre;
-    private String id;
-    private ArrayList<Libro> librosPrestados;
+    private String nombre;        // nombre del usuario
+    private String id;            // identificador del usuario
+    private ArrayList<Libro> librosPrestados;    // lista de libros prestados que tiene el usuario
 
 
     public Usuario(String nombre, String id)

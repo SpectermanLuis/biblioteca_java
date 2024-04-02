@@ -2,10 +2,10 @@ package com.miapp.biblioteca;
 
 public class Calificacion {
 
-    private String idUsuario;
-    private String isbn;
-    private int estrellas;
-    private String comentario;
+    private String idUsuario;     // identificador del usuario
+    private String isbn;          // identificador idbn del libro
+    private int estrellas;        // calificacion otorgada al libro por el usuario ( valor de 1 a 5 )
+    private String comentario;    // reseña/comentario del libro realizada por un usuario
 
 
     public Calificacion(String idUsuario, String isbn, int estrellas, String comentario) {

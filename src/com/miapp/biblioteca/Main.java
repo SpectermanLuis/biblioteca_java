@@ -201,7 +201,7 @@ public class Main {
 
                         switch (opcionLibros){
                             case 1:
-                            // Alta nuevo libro
+                                // Alta de un libro
                                 System.out.println("Ingresar Datos Nuevo Libro");
 
                                 System.out.print("Titulo Libro :");

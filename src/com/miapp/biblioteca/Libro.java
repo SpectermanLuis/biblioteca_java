@@ -1,16 +1,14 @@
 package com.miapp.biblioteca;
 
 public class Libro {
-    private String titulo;
-    private String autor;
-    private String ISBN;
-    private String genero;
-    private boolean disponible;
-
-    private String editorial;
+    private String titulo;        // titulo del libro
+    private String autor;         // autor del libro
+    private String ISBN;          // identificador isbn del libro
+    private String genero;        // genero del libro
+    private boolean disponible;   // estado de disponibilidad del libro  ( true = disponible  false = no disponible
+    private String editorial;     // editorial del libro
 
    public Libro() {
-
    }
 
     public Libro(String titulo, String autor, String ISBN, String genero,String editorial, boolean disponible) {
