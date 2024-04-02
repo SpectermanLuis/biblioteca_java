@@ -1,5 +1,9 @@
 package com.miapp.biblioteca.ui;
 
+/**
+ *  Metodos varios que van diseñando los distintos menues y submenues del sistema
+ *  Son invocados desde el main
+ */
 public class UtilidadesMenu {
 
     public static void mostrarMenuPrincipal() {
@@ -7,15 +11,11 @@ public class UtilidadesMenu {
         System.out.println("*   Menú Principal Sistema Biblioteca 2.0  *");
         System.out.println("********************************************");
         System.out.println("        1. SubMenu Usuarios                 ");
-        System.out.println("                                            ");
         System.out.println("        2. SubMenu Libros                   ");
-        System.out.println("                                            ");
         System.out.println("        3. SubMenu Movimientos              ");
-        System.out.println("                                            ");
         System.out.println("        4. SubMenu Calificaciones           ");
         System.out.println("                                            ");
-        System.out.println("        5. Carga Automatica de              ");
-        System.out.println("           datos prueba                     ");
+        System.out.println("        5. Carga Automatica Datos de Prueba ");
         System.out.println("                                            ");
         System.out.println("        9. Salir del Sistema                ");
         System.out.println("********************************************");

@@ -7,6 +7,7 @@ import com.miapp.biblioteca.service.CalificacionServicio;
 import com.sun.xml.internal.ws.api.client.SelectOptimalEncodingFeature;
 import com.miapp.biblioteca.ui.UtilidadesMenu;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -55,11 +56,16 @@ public class Main {
                                 if(usuarioVerificar == null)
                                   {
                                     usuarioServicio.crearUsuario(nombreUsuario, idUsuario);
-                                    System.out.println("NUEVO USUARIO INGRESADO OK !");
+                                    System.out.println("*********************************");
+                                    System.out.println("*  NUEVO USUARIO INGRESADO OK ! *");
+                                    System.out.println("*********************************");
 
                                   } else {
-                                    System.out.println("No se Pudo dar el Alta");
-                                    System.out.println("Id.Usuario YA EXISTE como registrado.!!");
+                                    System.out.println("****************************");
+                                    System.out.println("*  No se Pudo dar el Alta  *");
+                                    System.out.println("*  Id.Usuario YA EXISTE    *");
+                                    System.out.println("*    como registrado.!!    *");
+                                    System.out.println("****************************");
                                 }
 
                                 System.out.println("Presiona Enter para continuar...");
@@ -78,9 +84,15 @@ public class Main {
                                    System.out.println("Ingrese Nombre Modificado :");
                                    String nuevoNombre = scanner.nextLine();
                                    usuarioServicio.actualizarUsuario(idUsuarioModificar, nuevoNombre);
-                                   System.out.println("Usuario Modificado Ok !");
+                                   System.out.println("*****************************");
+                                   System.out.println("*  Usuario Modificado Ok !  *");
+                                   System.out.println("*****************************");
+
                                } else {
-                                   System.out.println("Usuario Ingreso para Modificar NO EXISTE como Registrado");
+                                   System.out.println("**************************************");
+                                   System.out.println("*  Usuario Ingresado para Modificar  *");
+                                   System.out.println("*    NO EXISTE como Registrado       *");
+                                   System.out.println("**************************************");
                                }
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
@@ -98,14 +110,21 @@ public class Main {
                                     // verificar que el usuario no tenga libros pendientes de devolver
                                     if(usuarioServicio.obtenerLibrosPrestados(usuarioVerificar).isEmpty()) {
                                         usuarioServicio.eliminarUsuario(idUsuarioEliminar);
-                                        System.out.println("Usuario Eliminado OK !");
+                                        System.out.println("****************************");
+                                        System.out.println("*  Usuario Eliminado OK !  *");
+                                        System.out.println("****************************");
+
                                     } else {
-                                        System.out.println("Usuario NO Se Puede Eliminar");
-                                        System.out.println("por tener libros prestados sin devolver");
+                                        System.out.println("*********************************************");
+                                        System.out.println("*        Usuario NO Se Puede Eliminar       *");
+                                        System.out.println("*  por tener libros prestados sin devolver  *");
+                                        System.out.println("*********************************************");
                                     }
 
                                 } else {
-                                    System.out.println("Usuario A Eliminar NO EXISTE como registrado");
+                                    System.out.println("*************************************************");
+                                    System.out.println("* Usuario A Eliminar NO EXISTE como registrado  *");
+                                    System.out.println("*************************************************");
                                 }
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
@@ -149,14 +168,14 @@ public class Main {
                                                 System.out.println("Usuario encontrado ");
                                                 System.out.println("Id : " + idBuscar);
                                                 System.out.println("Nombre : " + usuarioId.getNombre());
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
 
                                             } else {
-                                                System.out.println("Usuario No Encontrado");
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
+                                                System.out.println("*************************");
+                                                System.out.println("* Usuario No Encontrado *");
+                                                System.out.println("*************************");
                                             }
+                                            System.out.println("Presiona Enter para continuar...");
+                                            scanner.nextLine();
                                             break;
 
                                         case 3:
@@ -172,14 +191,15 @@ public class Main {
                                                     System.out.println("Nombre " + usuario.getNombre());
                                                     System.out.println("-----------------------------------");
                                                 }
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
 
                                             } else {
-                                                System.out.println("Ningun Usuario cumple con la condicion de busqueda");
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
+                                                System.out.println("******************************************************");
+                                                System.out.println("* Ningun Usuario cumple con la condicion de busqueda *");
+                                                System.out.println("******************************************************");
+
                                             }
+                                            System.out.println("Presiona Enter para continuar...");
+                                            scanner.nextLine();
                                             break;
 
                                         default:
@@ -228,12 +248,15 @@ public class Main {
 
                                 if(libroVerificar == null) {
                                     libroServicio.crearLibro(titulo, autor, isbn, genero, editorial);
-                                    System.out.println("NUEVO LIBRO INGRESADO OK !");
+                                    System.out.println("*******************************");
+                                    System.out.println("*  NUEVO LIBRO INGRESADO OK ! *");
+                                    System.out.println("*******************************");
                                 } else {
-                                    System.out.println("No se Pudo dar el Alta");
-                                    System.out.println("ISBN YA EXISTE como registrado.!!");
+                                    System.out.println("**************************************");
+                                    System.out.println("*     NO se Pudo dar el Alta         *");
+                                    System.out.println("*  ISBN YA EXISTE como registrado.!! *");
+                                    System.out.println("**************************************");
                                 }
-
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
                                 break;
@@ -243,27 +266,74 @@ public class Main {
                                 System.out.println("Ingresar el ISBN libro a modificar :");
                                 String isbnModificar = scanner.nextLine();
 
-                                System.out.println("Ingrese Titulo Modificado :");
-                                String nuevoTitulo = scanner.nextLine();
+                                // VERIFICAR QUE EXISTA EL LIBRO A MODIFICAR
+                                Libro librom = libroServicio.buscarLibroPorISBN(isbnModificar);
 
-                                System.out.println("Ingrese Autor Modificado :");
-                                String nuevoAutor = scanner.nextLine();
+                                if(librom !=null) {
+                                    // por ser no null indica que se encontro al libro
+                                    // y se puede pedir datos para modificarlo
+                                    System.out.println("Ingrese Titulo Modificado :");
+                                    String nuevoTitulo = scanner.nextLine();
 
-                                System.out.println("Ingrese Genero Modificado :");
-                                String nuevoGenero = scanner.nextLine();
+                                    System.out.println("Ingrese Autor Modificado :");
+                                    String nuevoAutor = scanner.nextLine();
 
-                                System.out.println("Ingrese Editorial Modificada :");
-                                String nuevoEditorial = scanner.nextLine();
+                                    System.out.println("Ingrese Genero Modificado :");
+                                    String nuevoGenero = scanner.nextLine();
 
-                                libroServicio.actualizarLibro(isbnModificar,nuevoTitulo,nuevoAutor,nuevoGenero,nuevoEditorial);
+                                    System.out.println("Ingrese Editorial Modificada :");
+                                    String nuevoEditorial = scanner.nextLine();
 
+                                    libroServicio.actualizarLibro(isbnModificar, nuevoTitulo, nuevoAutor, nuevoGenero, nuevoEditorial);
+                                    System.out.println("****************************");
+                                    System.out.println("*  Libro actualizado OK !  *");
+                                    System.out.println("****************************");
+
+                                } else {
+                                    System.out.println("********************************************");
+                                    System.out.println("*  Isbn ingresado del libro para modificar *");
+                                    System.out.println("*     NO Existe como registrado            *");
+                                    System.out.println("********************************************");
+                                }
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
                                 break;
 
                             case 3:
                                 // eliminar libro de la biblioteca
                                 System.out.println("Ingresar el ISBN del libro a eliminar : ");
                                 String ISBNLibroEliminar = scanner.nextLine();
-                                libroServicio.eliminarLibro(ISBNLibroEliminar);
+
+                                // verificar que exista el libro a eliminar
+                                Libro libroe = libroServicio.buscarLibroPorISBN(ISBNLibroEliminar);
+
+                                if(libroe !=null) {
+                                    // verificar que el libro este disponible
+                                    // es decir esta fisicamente en la biblioteca
+                                    // si no esta disponible es que el usuario
+                                    // lo tiene en prestamo todavia
+
+                                    if(libroe.isDisponible()) {
+                                        libroServicio.eliminarLibro(ISBNLibroEliminar);
+                                        System.out.println("****************************");
+                                        System.out.println("*  Libro Eliminado  OK !   *");
+                                        System.out.println("****************************");
+                                    } else {
+                                        System.out.println("*******************************");
+                                        System.out.println("*  Libro NO SE PUEDE ELIMINAR *");
+                                        System.out.println("*     No esta disponible      *");
+                                        System.out.println("*     Esperar devolucion      *");
+                                        System.out.println("*******************************");
+                                    }
+
+                                } else {
+                                    System.out.println("********************************************");
+                                    System.out.println("*  Isbn ingresado del libro para Eliminar  *");
+                                    System.out.println("*     NO Existe como registrado            *");
+                                    System.out.println("********************************************");
+                                }
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
                                 break;
 
                             case 4:
@@ -277,11 +347,14 @@ public class Main {
                                      switch (opcionConsultaLibros){
                                          case 1:
                                              ArrayList<Libro> listaLibros = libroServicio.obtenerTodosLosLibros();
-                                             System.out.println(" Titulo           ISBN         Autor          Genero      Editorial");
-                                             System.out.println("-------------  ----------  --------------   -----------  -----------");
 
                                              for(Libro libro: listaLibros){
-                                                 System.out.println(libro.getTitulo() + " ( " + libro.getISBN() + " ) " + libro.getAutor() + " " + libro.getGenero() + " " + libro.getEditorial());
+                                                 System.out.println("ISBN: "    + libro.getISBN()   + "   "  +
+                                                         "Titulo: "  + libro.getTitulo() + "   "  +
+                                                         "Autor : "  + libro.getAutor()  + "  "   +
+                                                         "Genero:  " + libro.getGenero() + "  "   +
+                                                         "Editorial: " + libro.getEditorial() + "   " +
+                                                         "Disponible: " + libro.isDisponible());
                                              }
 
                                              System.out.println("Presiona Enter para continuar...");
@@ -296,14 +369,15 @@ public class Main {
                                              Libro libroISBN = libroServicio.buscarLibroPorISBN(isbnBuscar);
                                              if(libroISBN != null){
                                                  System.out.println("Libro encontrado : " + libroISBN.getTitulo());
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
 
                                              } else {
-                                                 System.out.println("Libro No Encontrado");
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
+                                                 System.out.println("**************************");
+                                                 System.out.println("*  Libro No Encontrado   *");
+                                                 System.out.println("**************************");
                                              }
+                                             System.out.println("Presiona Enter para continuar...");
+                                             scanner.nextLine();
+
                                             break;
 
                                          case 3:
@@ -315,16 +389,21 @@ public class Main {
                                              {
                                                  System.out.println("Libros Encontrados");
                                                  for (Libro libro :librosEncontradosTitulo){
-                                                     System.out.println(libro.getTitulo());
+                                                     System.out.println("ISBN: "    + libro.getISBN()   + "   "  +
+                                                                        "Titulo: "  + libro.getTitulo() + "   "  +
+                                                                        "Autor : "  + libro.getAutor()  + "  "   +
+                                                                        "Genero:  " + libro.getGenero() + "  "   +
+                                                                        "Editorial: " + libro.getEditorial() + "   " +
+                                                                        "Disponible: " + libro.isDisponible());
                                                  }
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
-
                                              } else {
-                                                 System.out.println("Ningun libro cumple con la condicion de busqueda");
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
+                                                 System.out.println("******************************************************");
+                                                 System.out.println("*  Ningun libro cumple con la condicion de busqueda  *");
+                                                 System.out.println("******************************************************");
                                              }
+                                             System.out.println("Presiona Enter para continuar...");
+                                             scanner.nextLine();
+
                                              break;
 
                                          case 4:
@@ -336,16 +415,20 @@ public class Main {
                                              {
                                                  System.out.println("Libros Encontrados");
                                                  for (Libro libro :librosEncontradosAutor){
-                                                     System.out.println(libro.getTitulo());
+                                                     System.out.println("ISBN: "    + libro.getISBN()   + "   "  +
+                                                             "Titulo: "  + libro.getTitulo() + "   "  +
+                                                             "Autor : "  + libro.getAutor()  + "  "   +
+                                                             "Genero:  " + libro.getGenero() + "  "   +
+                                                             "Editorial: " + libro.getEditorial() + "   " +
+                                                             "Disponible: " + libro.isDisponible());
                                                  }
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
 
                                              } else {
                                                  System.out.println("Ningun libro cumple con la condicion de busqueda");
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
                                              }
+                                             System.out.println("Presiona Enter para continuar...");
+                                             scanner.nextLine();
+
                                              break;
 
                                          case 5:
@@ -357,16 +440,19 @@ public class Main {
                                              {
                                                  System.out.println("Libros Encontrados");
                                                  for (Libro libro :librosEncontradosGenero){
-                                                     System.out.println(libro.getTitulo());
+                                                     System.out.println("ISBN: "    + libro.getISBN()   + "   "  +
+                                                             "Titulo: "  + libro.getTitulo() + "   "  +
+                                                             "Autor : "  + libro.getAutor()  + "  "   +
+                                                             "Genero:  " + libro.getGenero() + "  "   +
+                                                             "Editorial: " + libro.getEditorial() + "   " +
+                                                             "Disponible: " + libro.isDisponible());
                                                  }
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
 
                                              } else {
                                                  System.out.println("Ningun libro cumple con la condicion de busqueda");
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
                                              }
+                                             System.out.println("Presiona Enter para continuar...");
+                                             scanner.nextLine();
                                              break;
 
                                          case 6:
@@ -378,16 +464,20 @@ public class Main {
                                              {
                                                  System.out.println("Libros Encontrados");
                                                  for (Libro libro :librosEncontradosEditorial){
-                                                     System.out.println(libro.getTitulo());
+                                                     System.out.println("ISBN: "    + libro.getISBN()   + "   "  +
+                                                             "Titulo: "  + libro.getTitulo() + "   "  +
+                                                             "Autor : "  + libro.getAutor()  + "  "   +
+                                                             "Genero:  " + libro.getGenero() + "  "   +
+                                                             "Editorial: " + libro.getEditorial() + "   " +
+                                                             "Disponible: " + libro.isDisponible());
                                                  }
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
 
                                              } else {
                                                  System.out.println("Ningun libro cumple con la condicion de busqueda");
-                                                 System.out.println("Presiona Enter para continuar...");
-                                                 scanner.nextLine();
                                              }
+                                             System.out.println("Presiona Enter para continuar...");
+                                             scanner.nextLine();
+
                                              break;
 
                                          default:
