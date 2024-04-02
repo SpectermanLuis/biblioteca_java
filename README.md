@@ -90,9 +90,21 @@ El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta 
   lo que alimenta las consultas del submenu de calificaciones.
 
 
-
 - En el submenu de Movimientos - en la opcion de consultas , 
   los items Libros en Prestamo x Usuario ( general )  y 
   Libros en Prestamo x Usuario (Individual) podra ser tomado como 
   el equivalente a opcion de Aviso por vencimiento del prestamo
+
+
+- Tanto en Libros como Usuarios , antes de dar un alta , se verifica que
+  que el isbn o identificador no existan previamente registrados , en cuyo
+  caso se emite un mensaje informando la situacion.  Por el contrario , en 
+  Modificacion y Eliminacion se verifica la existencia previa del
+  usuario o libro.
+
+
+- En el menu principal , la opcion Carga Automatica de datos de prueba ,
+  lo que realiza es una carga inicial basica de algunos usuarios y libros 
+  como para tener datos para poder usar las opciones del sistema.
+
  

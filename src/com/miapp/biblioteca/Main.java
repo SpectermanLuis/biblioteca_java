@@ -58,7 +58,8 @@ public class Main {
                                     System.out.println("NUEVO USUARIO INGRESADO OK !");
 
                                   } else {
-                                    System.out.println("Usuario YA ESTA registrado.!!");
+                                    System.out.println("No se Pudo dar el Alta");
+                                    System.out.println("Id.Usuario YA EXISTE como registrado.!!");
                                 }
 
                                 System.out.println("Presiona Enter para continuar...");
@@ -218,8 +219,18 @@ public class Main {
                                 System.out.print("Editorial Libro :");
                                 String editorial  = scanner.nextLine();
 
-                                libroServicio.crearLibro(titulo,autor,isbn,genero,editorial);
+                                Libro libroVerificar = libroServicio.buscarLibroPorISBN(isbn);
 
+                                if(libroVerificar == null) {
+                                    libroServicio.crearLibro(titulo, autor, isbn, genero, editorial);
+                                    System.out.println("NUEVO LIBRO INGRESADO OK !");
+                                } else {
+                                    System.out.println("No se Pudo dar el Alta");
+                                    System.out.println("ISBN YA EXISTE como registrado.!!");
+                                }
+
+                                System.out.println("Presiona Enter para continuar...");
+                                scanner.nextLine();
                                 break;
 
                             case 2:
@@ -723,7 +734,6 @@ public static String convierteNumeroEnEstrellas(int valor){
 
            case 3:
                cadena = "***";
-
                break;
 
            case 4:
@@ -733,7 +743,6 @@ public static String convierteNumeroEnEstrellas(int valor){
            case 5:
                cadena = "*****";
                break;
-
        }
 
      return cadena;
