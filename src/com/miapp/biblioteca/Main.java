@@ -50,7 +50,7 @@ public class Main {
                                 System.out.print("Nombre Usuario :");
                                 String nombreUsuario = scanner.nextLine();
 
-                                // aca poner verificar que id usuario a crear no exista
+                                // verificar que id usuario a crear no exista
                                 Usuario usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuario);
                                 if(usuarioVerificar == null)
                                   {
@@ -71,7 +71,7 @@ public class Main {
                                 System.out.println("Ingresar Id usuario a modificar :");
                                 String idUsuarioModificar = scanner.nextLine();
 
-                                // aca poner verificar que id usuario a modificar exista
+                                //  poner verificar que id usuario a modificar exista
                                 usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuarioModificar);
 
                                if(usuarioVerificar != null) {
@@ -89,16 +89,21 @@ public class Main {
 
                             case 3:
                                 // eliminar usuario
-                                // se deberia poner una validacion que antes de eliminar
-                                // no tenga libros por devolver
                                 System.out.println("Ingresar el Id del Usuario a eliminar : ");
                                 String idUsuarioEliminar = scanner.nextLine();
 
-                                // aca poner verificar que id usuario a modificar exista
+                                // poner verificar que id usuario a modificar exista
                                 usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuarioEliminar);
                                 if(usuarioVerificar != null) {
-                                    usuarioServicio.eliminarUsuario(idUsuarioEliminar);
-                                    System.out.println("Usuario Eliminado OK !");
+                                    // verificar que el usuario no tenga libros pendientes de devolver
+                                    if(usuarioServicio.obtenerLibrosPrestados(usuarioVerificar).isEmpty()) {
+                                        usuarioServicio.eliminarUsuario(idUsuarioEliminar);
+                                        System.out.println("Usuario Eliminado OK !");
+                                    } else {
+                                        System.out.println("Usuario NO Se Puede Eliminar");
+                                        System.out.println("por tener libros prestados sin devolver");
+                                    }
+
                                 } else {
                                     System.out.println("Usuario A Eliminar NO EXISTE como registrado");
                                 }
@@ -432,7 +437,6 @@ public class Main {
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
 
-
                                 break;
 
                             case 2:
@@ -449,7 +453,8 @@ public class Main {
                                         System.out.println("Devolucion OK ");
                                         System.out.println("Libro devuelve por " + usuarioDevuelve.getNombre());
 
-
+                                        // una vez devuelto preguntar si quiere
+                                        // ingresar calificacion - comentario del libro
                                         System.out.println("Desea Calificar al Libro ?   ( S/N)");
                                         String sinoCalificacion  = scanner.nextLine();
 
@@ -530,7 +535,6 @@ public class Main {
                                                     }
 
                                                 }
-
                                             }
                                             System.out.println("Presiona Enter para continuar...");
                                             scanner.nextLine();
@@ -602,7 +606,6 @@ public class Main {
                         switch (opcionCalificaciones)
                         {
                             case 1:
-
                                 ArrayList<Calificacion> listaCalificaciones = calificacionServicio.obtenerCalificaciones();
                                 System.out.println(" Usuario         ISBN         Puntuacion     Comentario");
                                 System.out.println("-------------  ----------  --------------   -----------");
@@ -750,5 +753,3 @@ public static String convierteNumeroEnEstrellas(int valor){
     }
 
 }
-
-
