@@ -512,17 +512,26 @@ public class Main {
                                     if(libroPrestamo != null) {
                                        if(libroServicio.verificarDisponibilidad(libroPrestamo)){
                                           usuarioServicio.prestarLibro(usuarioPrestamo,libroPrestamo);
-                                           System.out.println("Prestamo OK" );
-                                           System.out.println("Libro prestado a " + usuarioPrestamo.getNombre());
+                                           System.out.println("*********************************");
+                                           System.out.println("*     Prestamo Procesado OK     *");
+                                           System.out.println("*  Libro prestado a " + usuarioPrestamo.getNombre() +" *");
+                                           System.out.println("*********************************");
+
                                        } else {
-                                           System.out.println("Libro No Disponible para Prestamo");
+                                           System.out.println("**************************************");
+                                           System.out.println("*  Libro No Disponible para Prestamo *");
+                                           System.out.println("**************************************");
                                        }
 
                                     } else {
-                                        System.out.println("Libro No Encontrado");
+                                        System.out.println("*************************");
+                                        System.out.println("*  Libro No Encontrado  *");
+                                        System.out.println("*************************");
                                     }
                                 } else {
-                                    System.out.println("Usuario No Encontrado");
+                                    System.out.println("***************************");
+                                    System.out.println("*  Usuario No Encontrado  *");
+                                    System.out.println("***************************");
                                 }
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
@@ -540,9 +549,10 @@ public class Main {
                                     Libro libroDevuelve = libroServicio.buscarLibroPorISBN(isbnDevuelve);
                                     if(libroDevuelve != null) {
                                         usuarioServicio.devolverLibro(usuarioDevuelve,libroDevuelve);
-                                        System.out.println("Devolucion OK ");
-                                        System.out.println("Libro devuelve por " + usuarioDevuelve.getNombre());
-
+                                        System.out.println("**************************************");
+                                        System.out.println("*       Devolucion OK                *");
+                                        System.out.println("*  Libro devuelve por " + usuarioDevuelve.getNombre() + " *");
+                                        System.out.println("**************************************");
                                         // una vez devuelto preguntar si quiere
                                         // ingresar calificacion - comentario del libro
                                         System.out.println("Desea Calificar al Libro ?   ( S/N)");
@@ -551,27 +561,34 @@ public class Main {
                                         if(sinoCalificacion.equalsIgnoreCase("S"))
                                            {
                                             // ingresar comentario / puntuacion
-                                            System.out.println("Ingresar Puntuacion al Libro");
-                                            System.out.println("Escala del 1 al 5");
-                                            System.out.println("Siendo 1 Muy Malo  y 5 Excelente");
+                                            System.out.println("**************************************");
+                                            System.out.println("*  Ingresar Puntuacion al Libro      *");
+                                            System.out.println("*  Escala del 1 al 5                 *");
+                                            System.out.println("*  Siendo 1 Muy Malo  y 5 Excelente  *");
+                                            System.out.println("**************************************");
                                             int puntuacionLibroDevuelto = scanner.nextInt();
 
                                             System.out.println("Ingresar Comentario del Libro :");
                                             String comentarioLibroDevuelto = scanner.nextLine();
 
                                             calificacionServicio.crearCalificacion(idUsuarioDevuelve, isbnDevuelve, puntuacionLibroDevuelto, comentarioLibroDevuelto);
-                                            System.out.println("Calificacion Ingresada OK !");
+                                            System.out.println("*********************************");
+                                            System.out.println("*  Calificacion Ingresada OK !  *");
+                                            System.out.println("*********************************");
                                            }
                                     } else {
-                                        System.out.println("Libro No Encontrado");
+                                        System.out.println("*************************");
+                                        System.out.println("*  Libro No Encontrado  *");
+                                        System.out.println("*************************");
                                     }
 
                                 } else {
-                                    System.out.println("Usuario No Encontrado");
+                                    System.out.println("***************************");
+                                    System.out.println("*  Usuario No Encontrado  *");
+                                    System.out.println("***************************");
                                 }
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
-
                                 break;
 
                             case 4:
@@ -589,14 +606,19 @@ public class Main {
 
                                             if(!listaLibrosEnPrestamo.isEmpty()){
                                                 // hay libros en prestamo , listarlos
-                                                System.out.println(" ISBN    Titulo    ");
-                                                System.out.println("-----  ----------  ");
-
                                                 for(Libro libro: listaLibrosEnPrestamo){
                                                     System.out.println(libro.getISBN() + "  " + libro.getTitulo());
+                                                    System.out.println("ISBN: "    + libro.getISBN()   + "   "  +
+                                                            "Titulo: "  + libro.getTitulo() + "   "  +
+                                                            "Autor : "  + libro.getAutor()  + "  "   +
+                                                            "Genero:  " + libro.getGenero() + "  "   +
+                                                            "Editorial: " + libro.getEditorial() + "   " +
+                                                            "Disponible: " + libro.isDisponible());
                                                 }
                                             } else {
-                                                System.out.println("No Hay Libros en Prestamo");
+                                                System.out.println("*******************************");
+                                                System.out.println("*  No Hay Libros en Prestamo  *");
+                                                System.out.println("*******************************");
                                             }
 
                                             System.out.println("Presiona Enter para continuar...");
@@ -617,13 +639,11 @@ public class Main {
                                                     ArrayList<Libro> librosPrestados = usuario.getLibrosPrestados();
 
                                                     for (Libro libroPrestadoUsuario:librosPrestados) {
-                                                        System.out.println(usuario.getId());
-                                                        System.out.println(usuario.getNombre());
-                                                        System.out.println(libroPrestadoUsuario.getISBN());
-                                                        System.out.println(libroPrestadoUsuario.getTitulo());
-                                                        System.out.println("--------------------------");
+                                                        System.out.println("Usuario :" +  usuario.getId() + "   "+
+                                                                           "Nombre : " +  usuario.getNombre() + "   " +
+                                                                           "ISBN : "   + libroPrestadoUsuario.getISBN() + "   " +
+                                                                           "Titulo : " +libroPrestadoUsuario.getTitulo());
                                                     }
-
                                                 }
                                             }
                                             System.out.println("Presiona Enter para continuar...");
@@ -642,31 +662,28 @@ public class Main {
                                                ArrayList<Libro>  librosPrestados = usuarioServicio.obtenerLibrosPrestados(usuario);
 
                                                 if(!librosPrestados.isEmpty()) {
-                                                    System.out.println(usuario.getId());
-                                                    System.out.println(usuario.getNombre());
+                                                    System.out.println("Usuario : " + usuario.getId());
+                                                    System.out.println("Nombre  : " + usuario.getNombre());
 
                                                     for(Libro libro : librosPrestados) {
-                                                        System.out.println(libro.getISBN());
-                                                        System.out.println(libro.getTitulo());
+                                                        System.out.println("ISBN : " + libro.getISBN() + "   " +
+                                                                           "Titulo :" + libro.getTitulo());
                                                     }
-                                                    System.out.println("Presiona Enter para continuar...");
-                                                    scanner.nextLine();
-
 
                                                 } else {
-                                                    System.out.println("Usuario No tiene Libros Prestados");
-                                                    System.out.println("Presiona Enter para continuar...");
-                                                    scanner.nextLine();
-
+                                                    System.out.println("***************************************");
+                                                    System.out.println("*  Usuario No tiene Libros Prestados  *");
+                                                    System.out.println("***************************************");
                                                 }
 
                                             } else {
-                                                System.out.println("Usuario No Encontrado");
-                                                System.out.println("Presiona Enter para continuar...");
-                                                scanner.nextLine();
+                                                System.out.println("***************************");
+                                                System.out.println("*  Usuario No Encontrado  *");
+                                                System.out.println("***************************");
 
                                             }
-
+                                            System.out.println("Presiona Enter para continuar...");
+                                            scanner.nextLine();
                                             break;
 
                                         default:
@@ -696,18 +713,18 @@ public class Main {
                         switch (opcionCalificaciones)
                         {
                             case 1:
+                                // consulta calificaciones generales emitidas por todos los libros / usuarios
                                 ArrayList<Calificacion> listaCalificaciones = calificacionServicio.obtenerCalificaciones();
                                 System.out.println(" Usuario         ISBN         Puntuacion     Comentario");
                                 System.out.println("-------------  ----------  --------------   -----------");
 
                                 for(Calificacion calificacion: listaCalificaciones){
                                     System.out.println(calificacion.getIdUsuario() + "  " + calificacion.getIsbn() +
-                                            "    " + convierteNumeroEnEstrellas(calificacion.getEstrellas()) + "     "  + calificacion.getComentario());
+                                            "    "  + convierteNumeroEnEstrellas(calificacion.getEstrellas()) +
+                                            "     " + calificacion.getComentario());
                                 }
-
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
-
                                 break;
 
                             case 2:
@@ -720,30 +737,31 @@ public class Main {
                                     ArrayList<Calificacion>  calificacionUsuario = calificacionServicio.buscarCalificacionPorUsuario(idUsuarioCalificacion) ;
 
                                     if(!calificacionUsuario.isEmpty()) {
-                                        System.out.println(usuario.getId());
-                                        System.out.println(usuario.getNombre());
+                                        System.out.println("Usuario : " + usuario.getId());
+                                        System.out.println("Nombre  : " + usuario.getNombre());
 
                                         for(Calificacion calificacion : calificacionUsuario) {
-                                            System.out.println(calificacion.getIsbn());
                                             Libro libro = libroServicio.buscarLibroPorISBN(calificacion.getIsbn());
-                                            System.out.println(libro.getTitulo());
+                                            System.out.println("ISBN :   " + calificacion.getIsbn() + "   " +
+                                                               "Titulo : " + libro.getTitulo() + "   " +
+                                                               "Calificacion : " +
+                                                               convierteNumeroEnEstrellas(calificacion.getEstrellas()) + "  "  +
+                                                                "Comentario : " +  calificacion.getComentario());
                                         }
-
                                     } else {
-                                        System.out.println("Usuario No tiene Calificaciones Realizadas");
-
+                                        System.out.println("************************************************");
+                                        System.out.println("*  Usuario No tiene Calificaciones Realizadas  *");
+                                        System.out.println("************************************************");
                                     }
 
                                 } else {
-                                    System.out.println("Usuario No Encontrado");
-
+                                    System.out.println("***************************");
+                                    System.out.println("*  Usuario No Encontrado  *");
+                                    System.out.println("***************************");
                                 }
-
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
-
                                 break;
-
 
                             case 3:
                                 System.out.println("Ingresar ISBN del Libro :");
@@ -756,29 +774,35 @@ public class Main {
 
                                     if(!calificacionIsbn.isEmpty()) {
 
-                                        System.out.println(libro.getISBN());
-                                        System.out.println(libro.getTitulo());
+                                        System.out.println("ISBN : "   + libro.getISBN());
+                                        System.out.println("Titulo : " + libro.getTitulo());
 
                                         for(Calificacion calificacion : calificacionIsbn) {
                                             System.out.println(calificacion.getIdUsuario());
                                             Usuario usuario1 = usuarioServicio.buscarUsuarioPorId(calificacion.getIdUsuario());
                                             System.out.println(usuario1.getNombre());
+
+                                            System.out.println("Usuario  : " + calificacion.getIdUsuario() + "   " +
+                                                    "Nombre  : " + usuario1.getNombre() + "   " +
+                                                    "Calificacion : " +
+                                                    convierteNumeroEnEstrellas(calificacion.getEstrellas()) + "  "  +
+                                                    "Comentario : " +  calificacion.getComentario());
                                         }
 
                                     } else {
-                                        System.out.println("Libro Sin Calificaciones");
-
+                                        System.out.println("******************************");
+                                        System.out.println("*  Libro Sin Calificaciones  *");
+                                        System.out.println("******************************");
                                     }
 
                                 } else {
-                                    System.out.println("Libro No Encontrado");
-
+                                    System.out.println("*************************");
+                                    System.out.println("*  Libro No Encontrado  *");
+                                    System.out.println("*************************");
                                 }
 
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
-
-
                                 break;
 
                         }
@@ -802,7 +826,9 @@ public class Main {
                 break;
 
                 case 9:
-                    System.out.println("Hasta la proxima !!");
+                    System.out.println("*************************");
+                    System.out.println("*  Hasta la proxima !!  *");
+                    System.out.println("*************************");
                     break;
 
                 default:
