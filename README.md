@@ -107,6 +107,11 @@ El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta 
   lo que realiza es una carga inicial basica de algunos usuarios y libros 
   como para tener datos para poder usar las opciones del sistema.
 
+- En las opciones en que se muestra la calificacion ingresada por los usuarios ,
+  si bien se entra un numero de 1 a 5 , en la visualizacion de consultas , la 
+  calificacion se muestra con su equivalente en cantidad de estrellas  
+   1 = * , 2 = ** , 3 = *** , 4 = **** , 5 = *****
+
 
 ### Datos de Prueba - Carga Automatica Inicial ( Opcion 5 Menu Principal)
 
