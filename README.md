@@ -107,4 +107,18 @@ El presente documento es sobre el **Proyecto Integrador** de ***ALKEMY***. Esta 
   lo que realiza es una carga inicial basica de algunos usuarios y libros 
   como para tener datos para poder usar las opciones del sistema.
 
- 
+
+### Datos de Prueba - Carga Automatica Inicial ( Opcion 5 Menu Principal)
+
+                    Libros
+                    Titulo = LIBRO 1    Autor = AUTOR 1   ISBN = 11111    Genero = SUSPENSO   Editorial = MAR AZUL 
+                    Titulo = LIBRO 2    Autor = AUTOR 2   ISBN = 22222    Genero = COMEDIA    Editorial = ALFAGUARA
+                    Titulo = LIBRO 3    Autor = AUTOR 3   ISBN = 33333    Genero = SUSPENSO   Editorial = MAR AZUL 
+                    Titulo = LIBRO 4    Autor = AUTOR 4   ISBN = 44444    Genero = ACCION     Editorial = 3 TIROS  
+
+                    Usuarios 
+                    Nombre = Luis   Identificacion = 00001
+                    Nombre = Maria  Identificacion = 00002
+                    Nombre = Jorge  Identificacion = 00003
+                    Nombre = Lucia  Identificacion = 00004
+,,,
