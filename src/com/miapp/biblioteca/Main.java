@@ -4,10 +4,10 @@ import com.miapp.biblioteca.service.LibroServicio;
 import com.miapp.biblioteca.service.UsuarioServicio;
 import com.miapp.biblioteca.service.CalificacionServicio;
 
-import com.sun.xml.internal.ws.api.client.SelectOptimalEncodingFeature;
+// import com.sun.xml.internal.ws.api.client.SelectOptimalEncodingFeature;
 import com.miapp.biblioteca.ui.UtilidadesMenu;
 
-import javax.xml.bind.SchemaOutputResolver;
+// import javax.xml.bind.SchemaOutputResolver;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -78,9 +78,9 @@ public class Main {
                                 String idUsuarioModificar = scanner.nextLine();
 
                                 //  poner verificar que id usuario a modificar exista
-                                usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuarioModificar);
+                                Usuario usuarioVerificarm = usuarioServicio.buscarUsuarioPorId(idUsuarioModificar);
 
-                               if(usuarioVerificar != null) {
+                               if(usuarioVerificarm != null) {
                                    System.out.println("Ingrese Nombre Modificado :");
                                    String nuevoNombre = scanner.nextLine();
                                    usuarioServicio.actualizarUsuario(idUsuarioModificar, nuevoNombre);
@@ -105,10 +105,10 @@ public class Main {
                                 String idUsuarioEliminar = scanner.nextLine();
 
                                 // poner verificar que id usuario a modificar exista
-                                usuarioVerificar = usuarioServicio.buscarUsuarioPorId(idUsuarioEliminar);
-                                if(usuarioVerificar != null) {
+                                Usuario usuarioVerificare = usuarioServicio.buscarUsuarioPorId(idUsuarioEliminar);
+                                if(usuarioVerificare != null) {
                                     // verificar que el usuario no tenga libros pendientes de devolver
-                                    if(usuarioServicio.obtenerLibrosPrestados(usuarioVerificar).isEmpty()) {
+                                    if(usuarioServicio.obtenerLibrosPrestados(usuarioVerificare).isEmpty()) {
                                         usuarioServicio.eliminarUsuario(idUsuarioEliminar);
                                         System.out.println("****************************");
                                         System.out.println("*  Usuario Eliminado OK !  *");
@@ -543,11 +543,13 @@ public class Main {
                                 System.out.println("Ingresar Id del Usuario :");
                                 String idUsuarioDevuelve = scanner.nextLine();
                                 Usuario usuarioDevuelve = usuarioServicio.buscarUsuarioPorId(idUsuarioDevuelve);
-                                if(usuarioDevuelve != null) {
+                                if(usuarioDevuelve != null)
+                                 {
                                     System.out.println("Ingresar el ISBN del libro a devolver :");
                                     String isbnDevuelve = scanner.nextLine();
                                     Libro libroDevuelve = libroServicio.buscarLibroPorISBN(isbnDevuelve);
-                                    if(libroDevuelve != null) {
+                                    if(libroDevuelve != null)
+                                    {
                                         usuarioServicio.devolverLibro(usuarioDevuelve,libroDevuelve);
                                         System.out.println("**************************************");
                                         System.out.println("*       Devolucion OK                *");
@@ -555,23 +557,26 @@ public class Main {
                                         System.out.println("**************************************");
                                         // una vez devuelto preguntar si quiere
                                         // ingresar calificacion - comentario del libro
-                                        System.out.println("Desea Calificar al Libro ?   ( S/N)");
+                                        System.out.println("Desea Calificar al Libro ?   ( SI/NO)");
                                         String sinoCalificacion  = scanner.nextLine();
 
-                                        if(sinoCalificacion.equalsIgnoreCase("S"))
+                                        if(sinoCalificacion.equalsIgnoreCase("SI"))
                                            {
                                             // ingresar comentario / puntuacion
-                                            System.out.println("**************************************");
-                                            System.out.println("*  Ingresar Puntuacion al Libro      *");
-                                            System.out.println("*  Escala del 1 al 5                 *");
-                                            System.out.println("*  Siendo 1 Muy Malo  y 5 Excelente  *");
-                                            System.out.println("**************************************");
-                                            int puntuacionLibroDevuelto = scanner.nextInt();
 
-                                            System.out.println("Ingresar Comentario del Libro :");
-                                            String comentarioLibroDevuelto = scanner.nextLine();
+                                           System.out.println("Ingresar Comentario del Libro :");
+                                           String comentarioLibroDevuelto = scanner.nextLine();
+
+                                           System.out.println("**************************************");
+                                           System.out.println("*  Ingresar Puntuacion al Libro      *");
+                                           System.out.println("*  Escala del 1 al 5                 *");
+                                           System.out.println("*  Siendo 1 Muy Malo  y 5 Excelente  *");
+                                           System.out.println("**************************************");
+
+                                           int puntuacionLibroDevuelto = scanner.nextInt();
 
                                             calificacionServicio.crearCalificacion(idUsuarioDevuelve, isbnDevuelve, puntuacionLibroDevuelto, comentarioLibroDevuelto);
+                                            scanner.nextLine();
                                             System.out.println("*********************************");
                                             System.out.println("*  Calificacion Ingresada OK !  *");
                                             System.out.println("*********************************");
@@ -582,11 +587,11 @@ public class Main {
                                         System.out.println("*************************");
                                     }
 
-                                } else {
+                                 } else {
                                     System.out.println("***************************");
                                     System.out.println("*  Usuario No Encontrado  *");
                                     System.out.println("***************************");
-                                }
+                                        }
                                 System.out.println("Presiona Enter para continuar...");
                                 scanner.nextLine();
                                 break;
@@ -778,10 +783,7 @@ public class Main {
                                         System.out.println("Titulo : " + libro.getTitulo());
 
                                         for(Calificacion calificacion : calificacionIsbn) {
-                                            System.out.println(calificacion.getIdUsuario());
                                             Usuario usuario1 = usuarioServicio.buscarUsuarioPorId(calificacion.getIdUsuario());
-                                            System.out.println(usuario1.getNombre());
-
                                             System.out.println("Usuario  : " + calificacion.getIdUsuario() + "   " +
                                                     "Nombre  : " + usuario1.getNombre() + "   " +
                                                     "Calificacion : " +
